@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBC - Inteligencia Artificial", "RBC - Inteligencia Artificial.csproj", "{D3EBA33C-6770-4E98-B0BE-36896DE7661D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3EBA33C-6770-4E98-B0BE-36896DE7661D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3EBA33C-6770-4E98-B0BE-36896DE7661D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3EBA33C-6770-4E98-B0BE-36896DE7661D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3EBA33C-6770-4E98-B0BE-36896DE7661D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F58ED079-E4C5-46A5-B2F8-5E59B7B20A42}
+	EndGlobalSection
+EndGlobal
