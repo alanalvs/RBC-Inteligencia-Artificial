@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controls\modeloBotao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\modeloBotao.Designer.cs">
+      <DependentUpon>modeloBotao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\novoBotao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\novoBotao.Designer.cs">
+      <DependentUpon>novoBotao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\textBoxComImagem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\textBoxComImagem.Designer.cs">
+      <DependentUpon>textBoxComImagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\NovoTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\NovoTextBox.Designer.cs">
+      <DependentUpon>NovoTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +78,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="controls\textBoxComImagem.resx">
+      <DependentUpon>textBoxComImagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\NovoTextBox.resx">
+      <DependentUpon>NovoTextBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,8 +109,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
