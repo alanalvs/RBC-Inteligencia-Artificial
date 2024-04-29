@@ -123,6 +123,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -140,6 +141,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iconRikaPreto.ico" />
+    <None Include="Resources\janela-minimizada.png" />
+    <None Include="Resources\x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
