@@ -40,11 +40,27 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.novoBotao1 = new RBC___Inteligencia_Artificial.controls.novoBotao();
+            this.textBoxComImagem1 = new RBC___Inteligencia_Artificial.controls.textBoxComImagem();
             this.idpais = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomepais = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.siglapais = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.novoBotao1 = new RBC___Inteligencia_Artificial.controls.novoBotao();
-            this.textBoxComImagem1 = new RBC___Inteligencia_Artificial.controls.textBoxComImagem();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PalavrasChave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdiomaOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TituloOriginal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisaoGeral = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Popularidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PaisesProdutores = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataLiberacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Receita = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Idiomas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slogan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MediaVotos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantidadeVotos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -125,7 +141,23 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idpais,
             this.nomepais,
-            this.siglapais});
+            this.siglapais,
+            this.Id,
+            this.PalavrasChave,
+            this.IdiomaOriginal,
+            this.TituloOriginal,
+            this.VisaoGeral,
+            this.Popularidade,
+            this.Producao,
+            this.PaisesProdutores,
+            this.DataLiberacao,
+            this.Receita,
+            this.Idiomas,
+            this.Status,
+            this.Slogan,
+            this.Titulo,
+            this.MediaVotos,
+            this.QuantidadeVotos});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -153,33 +185,6 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Size = new System.Drawing.Size(765, 316);
             this.dataGridView1.TabIndex = 102;
-            // 
-            // idpais
-            // 
-            this.idpais.DataPropertyName = "IDPAIS";
-            this.idpais.FillWeight = 45.68528F;
-            this.idpais.HeaderText = "Código";
-            this.idpais.Name = "idpais";
-            this.idpais.ReadOnly = true;
-            this.idpais.Width = 88;
-            // 
-            // nomepais
-            // 
-            this.nomepais.DataPropertyName = "NOME";
-            this.nomepais.FillWeight = 161.8271F;
-            this.nomepais.HeaderText = "Nome";
-            this.nomepais.Name = "nomepais";
-            this.nomepais.ReadOnly = true;
-            this.nomepais.Width = 78;
-            // 
-            // siglapais
-            // 
-            this.siglapais.DataPropertyName = "SIGLA";
-            this.siglapais.FillWeight = 92.48762F;
-            this.siglapais.HeaderText = "Sigla";
-            this.siglapais.Name = "siglapais";
-            this.siglapais.ReadOnly = true;
-            this.siglapais.Width = 72;
             // 
             // novoBotao1
             // 
@@ -216,6 +221,145 @@
             this.textBoxComImagem1.TabIndex = 49;
             this.textBoxComImagem1.TextNew = "";
             this.textBoxComImagem1.UnderlinedStyle = false;
+            // 
+            // idpais
+            // 
+            this.idpais.DataPropertyName = "IDPAIS";
+            this.idpais.FillWeight = 45.68528F;
+            this.idpais.HeaderText = "Código";
+            this.idpais.Name = "idpais";
+            this.idpais.ReadOnly = true;
+            this.idpais.Width = 88;
+            // 
+            // nomepais
+            // 
+            this.nomepais.DataPropertyName = "NOME";
+            this.nomepais.FillWeight = 161.8271F;
+            this.nomepais.HeaderText = "Gênero";
+            this.nomepais.Name = "nomepais";
+            this.nomepais.ReadOnly = true;
+            this.nomepais.Width = 92;
+            // 
+            // siglapais
+            // 
+            this.siglapais.DataPropertyName = "SIGLA";
+            this.siglapais.FillWeight = 92.48762F;
+            this.siglapais.HeaderText = "Página Inicial";
+            this.siglapais.Name = "siglapais";
+            this.siglapais.ReadOnly = true;
+            this.siglapais.Width = 139;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 48;
+            // 
+            // PalavrasChave
+            // 
+            this.PalavrasChave.HeaderText = "Palavras-Chave";
+            this.PalavrasChave.Name = "PalavrasChave";
+            this.PalavrasChave.ReadOnly = true;
+            this.PalavrasChave.Width = 156;
+            // 
+            // IdiomaOriginal
+            // 
+            this.IdiomaOriginal.HeaderText = "Idioma Original";
+            this.IdiomaOriginal.Name = "IdiomaOriginal";
+            this.IdiomaOriginal.ReadOnly = true;
+            this.IdiomaOriginal.Width = 139;
+            // 
+            // TituloOriginal
+            // 
+            this.TituloOriginal.HeaderText = "Título Original";
+            this.TituloOriginal.Name = "TituloOriginal";
+            this.TituloOriginal.ReadOnly = true;
+            this.TituloOriginal.Width = 130;
+            // 
+            // VisaoGeral
+            // 
+            this.VisaoGeral.HeaderText = "Visão Geral";
+            this.VisaoGeral.Name = "VisaoGeral";
+            this.VisaoGeral.ReadOnly = true;
+            this.VisaoGeral.Width = 115;
+            // 
+            // Popularidade
+            // 
+            this.Popularidade.HeaderText = "Popularidade";
+            this.Popularidade.Name = "Popularidade";
+            this.Popularidade.ReadOnly = true;
+            this.Popularidade.Width = 137;
+            // 
+            // Producao
+            // 
+            this.Producao.HeaderText = "Empresa Produtora";
+            this.Producao.Name = "Producao";
+            this.Producao.ReadOnly = true;
+            this.Producao.Width = 170;
+            // 
+            // PaisesProdutores
+            // 
+            this.PaisesProdutores.HeaderText = "Países Produtores";
+            this.PaisesProdutores.Name = "PaisesProdutores";
+            this.PaisesProdutores.ReadOnly = true;
+            this.PaisesProdutores.Width = 162;
+            // 
+            // DataLiberacao
+            // 
+            this.DataLiberacao.HeaderText = "Data de Liberação";
+            this.DataLiberacao.Name = "DataLiberacao";
+            this.DataLiberacao.ReadOnly = true;
+            this.DataLiberacao.Width = 164;
+            // 
+            // Receita
+            // 
+            this.Receita.HeaderText = "Receita";
+            this.Receita.Name = "Receita";
+            this.Receita.ReadOnly = true;
+            this.Receita.Width = 94;
+            // 
+            // Idiomas
+            // 
+            this.Idiomas.HeaderText = "Idiomas";
+            this.Idiomas.Name = "Idiomas";
+            this.Idiomas.ReadOnly = true;
+            this.Idiomas.Width = 95;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Width = 85;
+            // 
+            // Slogan
+            // 
+            this.Slogan.HeaderText = "Slogan";
+            this.Slogan.Name = "Slogan";
+            this.Slogan.ReadOnly = true;
+            this.Slogan.Width = 88;
+            // 
+            // Titulo
+            // 
+            this.Titulo.HeaderText = "Título";
+            this.Titulo.Name = "Titulo";
+            this.Titulo.ReadOnly = true;
+            this.Titulo.Width = 76;
+            // 
+            // MediaVotos
+            // 
+            this.MediaVotos.HeaderText = "Média de Votos";
+            this.MediaVotos.Name = "MediaVotos";
+            this.MediaVotos.ReadOnly = true;
+            this.MediaVotos.Width = 143;
+            // 
+            // QuantidadeVotos
+            // 
+            this.QuantidadeVotos.HeaderText = "Quantidade de Votos";
+            this.QuantidadeVotos.Name = "QuantidadeVotos";
+            this.QuantidadeVotos.ReadOnly = true;
+            this.QuantidadeVotos.Width = 141;
             // 
             // FrmPrincipal
             // 
@@ -255,6 +399,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idpais;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomepais;
         private System.Windows.Forms.DataGridViewTextBoxColumn siglapais;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PalavrasChave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdiomaOriginal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TituloOriginal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VisaoGeral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Popularidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Producao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaisesProdutores;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataLiberacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Receita;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Idiomas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Slogan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MediaVotos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantidadeVotos;
     }
 }
 
