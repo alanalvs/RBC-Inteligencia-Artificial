@@ -141,6 +141,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iconRikaPreto.ico" />
+    <None Include="Resources\icone-video-gold.png" />
+    <None Include="Resources\icone-video.png" />
     <None Include="Resources\janela-minimizada.png" />
     <None Include="Resources\x.png" />
   </ItemGroup>

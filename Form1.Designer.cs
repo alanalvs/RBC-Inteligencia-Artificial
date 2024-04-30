@@ -34,10 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
-            this.txtNomeFilme = new System.Windows.Forms.TextBox();
             this.labelNomeFilme = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idpais = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,73 +59,36 @@
             this.pnlArrastarFormulario = new System.Windows.Forms.Panel();
             this.iconFechar = new System.Windows.Forms.PictureBox();
             this.iconMinimizar = new System.Windows.Forms.PictureBox();
-            this.novoBotao1 = new RBC___Inteligencia_Artificial.controls.novoBotao();
-            this.textBoxComImagem1 = new RBC___Inteligencia_Artificial.controls.textBoxComImagem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.btnPesquisar = new RBC___Inteligencia_Artificial.controls.novoBotao();
+            this.txtNomeFilme = new RBC___Inteligencia_Artificial.controls.textBoxComImagem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlArrastarFormulario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimizar)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtNomeFilme
-            // 
-            this.txtNomeFilme.Location = new System.Drawing.Point(172, 172);
-            this.txtNomeFilme.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtNomeFilme.Name = "txtNomeFilme";
-            this.txtNomeFilme.Size = new System.Drawing.Size(331, 26);
-            this.txtNomeFilme.TabIndex = 0;
-            this.txtNomeFilme.Leave += new System.EventHandler(this.txtNomeFilme_Leave);
-            // 
             // labelNomeFilme
             // 
             this.labelNomeFilme.AccessibleName = "";
             this.labelNomeFilme.AutoSize = true;
             this.labelNomeFilme.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNomeFilme.Location = new System.Drawing.Point(58, 169);
-            this.labelNomeFilme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNomeFilme.ForeColor = System.Drawing.Color.DimGray;
+            this.labelNomeFilme.Location = new System.Drawing.Point(40, 133);
             this.labelNomeFilme.Name = "labelNomeFilme";
-            this.labelNomeFilme.Size = new System.Drawing.Size(77, 30);
+            this.labelNomeFilme.Size = new System.Drawing.Size(84, 22);
             this.labelNomeFilme.TabIndex = 46;
-            this.labelNomeFilme.Text = "Filme";
-            this.labelNomeFilme.Click += new System.EventHandler(this.label1lblCodigoPassagem_Click);
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
-            this.dataGridView2.Location = new System.Drawing.Point(64, 648);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.Size = new System.Drawing.Size(1068, 414);
-            this.dataGridView2.TabIndex = 47;
-            this.dataGridView2.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.MinimumWidth = 8;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 150;
+            this.labelNomeFilme.Text = "Pesquisa";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gold;
-            this.label4.Location = new System.Drawing.Point(270, 75);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(262, 44);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(711, 47);
+            this.label4.Size = new System.Drawing.Size(466, 31);
             this.label4.TabIndex = 48;
             this.label4.Text = "Raciocínio Baseado em Casos (RBC)";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // dataGridView1
             // 
@@ -136,8 +96,6 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(239)))), ((int)(((byte)(249)))));
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -175,13 +133,12 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MediumPurple;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(64, 213);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(43, 186);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -189,15 +146,15 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.MediumSlateBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.Size = new System.Drawing.Size(1148, 486);
+            this.dataGridView1.Size = new System.Drawing.Size(887, 443);
             this.dataGridView1.TabIndex = 102;
             // 
             // idpais
@@ -208,7 +165,7 @@
             this.idpais.MinimumWidth = 8;
             this.idpais.Name = "idpais";
             this.idpais.ReadOnly = true;
-            this.idpais.Width = 132;
+            this.idpais.Width = 88;
             // 
             // nomepais
             // 
@@ -218,7 +175,7 @@
             this.nomepais.MinimumWidth = 8;
             this.nomepais.Name = "nomepais";
             this.nomepais.ReadOnly = true;
-            this.nomepais.Width = 134;
+            this.nomepais.Width = 92;
             // 
             // siglapais
             // 
@@ -228,7 +185,7 @@
             this.siglapais.MinimumWidth = 8;
             this.siglapais.Name = "siglapais";
             this.siglapais.ReadOnly = true;
-            this.siglapais.Width = 187;
+            this.siglapais.Width = 127;
             // 
             // Id
             // 
@@ -236,7 +193,7 @@
             this.Id.MinimumWidth = 8;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
-            this.Id.Width = 69;
+            this.Id.Width = 48;
             // 
             // PalavrasChave
             // 
@@ -244,7 +201,7 @@
             this.PalavrasChave.MinimumWidth = 8;
             this.PalavrasChave.Name = "PalavrasChave";
             this.PalavrasChave.ReadOnly = true;
-            this.PalavrasChave.Width = 229;
+            this.PalavrasChave.Width = 156;
             // 
             // IdiomaOriginal
             // 
@@ -252,7 +209,7 @@
             this.IdiomaOriginal.MinimumWidth = 8;
             this.IdiomaOriginal.Name = "IdiomaOriginal";
             this.IdiomaOriginal.ReadOnly = true;
-            this.IdiomaOriginal.Width = 206;
+            this.IdiomaOriginal.Width = 139;
             // 
             // TituloOriginal
             // 
@@ -260,7 +217,7 @@
             this.TituloOriginal.MinimumWidth = 8;
             this.TituloOriginal.Name = "TituloOriginal";
             this.TituloOriginal.ReadOnly = true;
-            this.TituloOriginal.Width = 196;
+            this.TituloOriginal.Width = 130;
             // 
             // VisaoGeral
             // 
@@ -268,7 +225,7 @@
             this.VisaoGeral.MinimumWidth = 8;
             this.VisaoGeral.Name = "VisaoGeral";
             this.VisaoGeral.ReadOnly = true;
-            this.VisaoGeral.Width = 168;
+            this.VisaoGeral.Width = 115;
             // 
             // Popularidade
             // 
@@ -276,7 +233,7 @@
             this.Popularidade.MinimumWidth = 8;
             this.Popularidade.Name = "Popularidade";
             this.Popularidade.ReadOnly = true;
-            this.Popularidade.Width = 204;
+            this.Popularidade.Width = 137;
             // 
             // Producao
             // 
@@ -284,7 +241,7 @@
             this.Producao.MinimumWidth = 8;
             this.Producao.Name = "Producao";
             this.Producao.ReadOnly = true;
-            this.Producao.Width = 249;
+            this.Producao.Width = 170;
             // 
             // PaisesProdutores
             // 
@@ -292,7 +249,7 @@
             this.PaisesProdutores.MinimumWidth = 8;
             this.PaisesProdutores.Name = "PaisesProdutores";
             this.PaisesProdutores.ReadOnly = true;
-            this.PaisesProdutores.Width = 239;
+            this.PaisesProdutores.Width = 162;
             // 
             // DataLiberacao
             // 
@@ -300,7 +257,7 @@
             this.DataLiberacao.MinimumWidth = 8;
             this.DataLiberacao.Name = "DataLiberacao";
             this.DataLiberacao.ReadOnly = true;
-            this.DataLiberacao.Width = 237;
+            this.DataLiberacao.Width = 164;
             // 
             // Receita
             // 
@@ -308,7 +265,7 @@
             this.Receita.MinimumWidth = 8;
             this.Receita.Name = "Receita";
             this.Receita.ReadOnly = true;
-            this.Receita.Width = 136;
+            this.Receita.Width = 94;
             // 
             // Idiomas
             // 
@@ -316,7 +273,7 @@
             this.Idiomas.MinimumWidth = 8;
             this.Idiomas.Name = "Idiomas";
             this.Idiomas.ReadOnly = true;
-            this.Idiomas.Width = 139;
+            this.Idiomas.Width = 95;
             // 
             // Status
             // 
@@ -324,7 +281,7 @@
             this.Status.MinimumWidth = 8;
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
-            this.Status.Width = 119;
+            this.Status.Width = 85;
             // 
             // Slogan
             // 
@@ -332,7 +289,7 @@
             this.Slogan.MinimumWidth = 8;
             this.Slogan.Name = "Slogan";
             this.Slogan.ReadOnly = true;
-            this.Slogan.Width = 129;
+            this.Slogan.Width = 88;
             // 
             // Titulo
             // 
@@ -340,7 +297,7 @@
             this.Titulo.MinimumWidth = 8;
             this.Titulo.Name = "Titulo";
             this.Titulo.ReadOnly = true;
-            this.Titulo.Width = 114;
+            this.Titulo.Width = 76;
             // 
             // MediaVotos
             // 
@@ -348,7 +305,7 @@
             this.MediaVotos.MinimumWidth = 8;
             this.MediaVotos.Name = "MediaVotos";
             this.MediaVotos.ReadOnly = true;
-            this.MediaVotos.Width = 150;
+            this.MediaVotos.Width = 143;
             // 
             // QuantidadeVotos
             // 
@@ -356,7 +313,7 @@
             this.QuantidadeVotos.MinimumWidth = 8;
             this.QuantidadeVotos.Name = "QuantidadeVotos";
             this.QuantidadeVotos.ReadOnly = true;
-            this.QuantidadeVotos.Width = 206;
+            this.QuantidadeVotos.Width = 141;
             // 
             // pnlArrastarFormulario
             // 
@@ -364,9 +321,8 @@
             this.pnlArrastarFormulario.Controls.Add(this.iconMinimizar);
             this.pnlArrastarFormulario.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlArrastarFormulario.Location = new System.Drawing.Point(0, 0);
-            this.pnlArrastarFormulario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlArrastarFormulario.Name = "pnlArrastarFormulario";
-            this.pnlArrastarFormulario.Size = new System.Drawing.Size(1250, 37);
+            this.pnlArrastarFormulario.Size = new System.Drawing.Size(976, 24);
             this.pnlArrastarFormulario.TabIndex = 103;
             this.pnlArrastarFormulario.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlArrastarFormulario_MouseDown);
             // 
@@ -375,10 +331,9 @@
             this.iconFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconFechar.Image = global::RBC___Inteligencia_Artificial.Properties.Resources.x;
-            this.iconFechar.Location = new System.Drawing.Point(1202, 6);
-            this.iconFechar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconFechar.Location = new System.Drawing.Point(944, 4);
             this.iconFechar.Name = "iconFechar";
-            this.iconFechar.Size = new System.Drawing.Size(30, 31);
+            this.iconFechar.Size = new System.Drawing.Size(20, 20);
             this.iconFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconFechar.TabIndex = 30;
             this.iconFechar.TabStop = false;
@@ -389,74 +344,74 @@
             this.iconMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconMinimizar.Image = global::RBC___Inteligencia_Artificial.Properties.Resources.janela_minimizada;
-            this.iconMinimizar.Location = new System.Drawing.Point(1163, 6);
-            this.iconMinimizar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconMinimizar.Location = new System.Drawing.Point(918, 4);
             this.iconMinimizar.Name = "iconMinimizar";
-            this.iconMinimizar.Size = new System.Drawing.Size(30, 31);
+            this.iconMinimizar.Size = new System.Drawing.Size(20, 20);
             this.iconMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconMinimizar.TabIndex = 31;
             this.iconMinimizar.TabStop = false;
             this.iconMinimizar.Click += new System.EventHandler(this.iconMinimizar_Click);
             // 
-            // novoBotao1
+            // btnPesquisar
             // 
-            this.novoBotao1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.novoBotao1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.novoBotao1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.novoBotao1.BorderRadius = 0;
-            this.novoBotao1.BorderSize = 0;
-            this.novoBotao1.FlatAppearance.BorderSize = 0;
-            this.novoBotao1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.novoBotao1.ForeColor = System.Drawing.Color.White;
-            this.novoBotao1.Location = new System.Drawing.Point(508, 263);
-            this.novoBotao1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.novoBotao1.Name = "novoBotao1";
-            this.novoBotao1.Size = new System.Drawing.Size(225, 62);
-            this.novoBotao1.TabIndex = 50;
-            this.novoBotao1.Text = "novoBotao1";
-            this.novoBotao1.TextColor = System.Drawing.Color.White;
-            this.novoBotao1.UseVisualStyleBackColor = false;
+            this.btnPesquisar.BackColor = System.Drawing.Color.Khaki;
+            this.btnPesquisar.BackgroundColor = System.Drawing.Color.Khaki;
+            this.btnPesquisar.BorderColor = System.Drawing.Color.Gold;
+            this.btnPesquisar.BorderRadius = 20;
+            this.btnPesquisar.BorderSize = 0;
+            this.btnPesquisar.FlatAppearance.BorderSize = 0;
+            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisar.ForeColor = System.Drawing.Color.DimGray;
+            this.btnPesquisar.Location = new System.Drawing.Point(435, 124);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(150, 40);
+            this.btnPesquisar.TabIndex = 50;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.TextColor = System.Drawing.Color.DimGray;
+            this.btnPesquisar.UseVisualStyleBackColor = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // textBoxComImagem1
+            // txtNomeFilme
             // 
-            this.textBoxComImagem1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxComImagem1.BorderColor = System.Drawing.Color.CornflowerBlue;
-            this.textBoxComImagem1.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.textBoxComImagem1.BorderSize = 2;
-            this.textBoxComImagem1.Location = new System.Drawing.Point(564, 159);
-            this.textBoxComImagem1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.textBoxComImagem1.Multiline = false;
-            this.textBoxComImagem1.Name = "textBoxComImagem1";
-            this.textBoxComImagem1.NovaImagem = null;
-            this.textBoxComImagem1.Padding = new System.Windows.Forms.Padding(10, 11, 10, 11);
-            this.textBoxComImagem1.PasswordChar = false;
-            this.textBoxComImagem1.Size = new System.Drawing.Size(442, 43);
-            this.textBoxComImagem1.TabIndex = 49;
-            this.textBoxComImagem1.TextNew = "";
-            this.textBoxComImagem1.UnderlinedStyle = false;
+            this.txtNomeFilme.BackColor = System.Drawing.Color.White;
+            this.txtNomeFilme.BorderColor = System.Drawing.Color.Gold;
+            this.txtNomeFilme.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtNomeFilme.BorderSize = 1;
+            this.txtNomeFilme.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNomeFilme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtNomeFilme.ForeColor = System.Drawing.Color.DimGray;
+            this.txtNomeFilme.Location = new System.Drawing.Point(126, 131);
+            this.txtNomeFilme.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNomeFilme.Multiline = false;
+            this.txtNomeFilme.Name = "txtNomeFilme";
+            this.txtNomeFilme.NovaImagem = global::RBC___Inteligencia_Artificial.Properties.Resources.icone_video_gold;
+            this.txtNomeFilme.Padding = new System.Windows.Forms.Padding(7);
+            this.txtNomeFilme.PasswordChar = false;
+            this.txtNomeFilme.Size = new System.Drawing.Size(295, 28);
+            this.txtNomeFilme.TabIndex = 49;
+            this.txtNomeFilme.TextNew = "Filme";
+            this.txtNomeFilme.UnderlinedStyle = false;
+            this.txtNomeFilme.Enter += new System.EventHandler(this.txtNomeFilme_Enter);
+            this.txtNomeFilme.Leave += new System.EventHandler(this.txtNomeFilme_Leave);
             // 
             // FrmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(1250, 926);
+            this.ClientSize = new System.Drawing.Size(976, 664);
             this.Controls.Add(this.pnlArrastarFormulario);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.novoBotao1);
-            this.Controls.Add(this.textBoxComImagem1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.labelNomeFilme);
+            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.txtNomeFilme);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelNomeFilme);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Raciocínio Baseado em Casos";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmPrincipal_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlArrastarFormulario.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconFechar)).EndInit();
@@ -467,14 +422,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtNomeFilme;
         private System.Windows.Forms.Label labelNomeFilme;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Label label4;
-        private controls.textBoxComImagem textBoxComImagem1;
-        private controls.novoBotao novoBotao1;
+        private controls.textBoxComImagem txtNomeFilme;
+        private controls.novoBotao btnPesquisar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idpais;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomepais;

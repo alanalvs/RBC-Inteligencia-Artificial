@@ -63,6 +63,26 @@ namespace RBC___Inteligencia_Artificial.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icone_video {
+            get {
+                object obj = ResourceManager.GetObject("icone-video", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icone_video_gold {
+            get {
+                object obj = ResourceManager.GetObject("icone-video-gold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap janela_minimizada {
             get {
                 object obj = ResourceManager.GetObject("janela-minimizada", resourceCulture);
