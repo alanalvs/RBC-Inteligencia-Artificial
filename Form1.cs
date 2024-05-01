@@ -182,6 +182,22 @@ namespace RBC___Inteligencia_Artificial
                         {
                             
                         }
+
+                        //Calculo com base nas informações abaixo
+                        /* Nome Coluna         - Posição
+                         * Idioma Original     - 5
+                         * Título Original     - 6
+                         * Visão Geral         -
+                         * Popularidade        - 
+                         * Slogan              - 
+                         * Quantidade de Votos - 
+                         */
+
+                        //Cálculo Idioma Original
+                        if (row.Cells[0] == dataGridView1.Rows[i].Cells[0]) //Não precisa disso
+                        {
+
+                        }
                     }
                 }
             }
