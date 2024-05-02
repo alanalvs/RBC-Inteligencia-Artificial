@@ -222,9 +222,9 @@ namespace RBC___Inteligencia_Artificial
         ////                 * Idioma Original     - 5
         ////                 * Título Original     - 6
         ////                 * Visão Geral         -
-        ////                 * Popularidade        - 
+        ////                 * Popularidade        - Minimo = 0, Maximo 900000000
         ////                 * Slogan              - 
-        ////                 * Quantidade de Votos - 
+        ////                 * Quantidade de Votos - Minimo = 0, Maximo 14000
         ////                 */
 
         ////                //Cálculo Idioma Original
@@ -253,7 +253,7 @@ namespace RBC___Inteligencia_Artificial
             }
 
             //Lista para armazenar os resultados de similaridade
-            List<(string coluna, string titulo, double similaridade)> resultados = new List<(string, string, double)>();
+            List<(string titulo, double similaridade, double similaridade1, double similaridade2, double similaridade3, double similaridade4, double similaridade5)> resultados = new List<(string, double, double, double, double, double, double)>();
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -268,25 +268,29 @@ namespace RBC___Inteligencia_Artificial
                 // Calcula a similaridade entre o nome do filme fornecido pelo usuário e os títulos dos filmes na lista
                 double similaridadeIdiomaOriginal = CalcularSimilaridadeContagemPalavras(filme.Cells["IdiomaOriginal"].Value.ToString(), 
                                                                                          idiomaOriginal);
-                resultados.Add(("IdiomaOriginal", idiomaOriginal, similaridadeIdiomaOriginal));
 
                 double similaridadeTituloOriginal = CalcularSimilaridadeContagemPalavras(filme.Cells["TituloOriginal"].Value.ToString(), 
                                                                                          tituloOriginal);
-                resultados.Add(("TituloOriginal", tituloOriginal, similaridadeTituloOriginal));
 
                 double similaridadeVisaoGeral = CalcularSimilaridadeContagemPalavras(filme.Cells["VisaoGeral"].Value.ToString(),
                                                                                      visaoGeral);
-                resultados.Add(("VisaoGeral", visaoGeral, similaridadeVisaoGeral));
 
-                double similaridadePopularidade = CalcularSimilaridadeContagemPalavras(nomeFilme, tituloOriginal);
-                resultados.Add(("Popularidade", popularidade.ToString(), similaridadePopularidade));
+                double similaridadePopularidade = CalcularSimilaridadeNumerica(Convert.ToDouble(filme.Cells["Popularidade"].Value),
+                                                                                                popularidade, 0, 900000000);
 
                 double similaridadeSlogan = CalcularSimilaridadeContagemPalavras(filme.Cells["Slogan"].Value.ToString(),
                                                                                  slogan);
-                resultados.Add(("Slogan", slogan, similaridadeSlogan));
 
-                double similaridadeQtdVotos = CalcularSimilaridadeContagemPalavras(nomeFilme, tituloOriginal);
-                resultados.Add(("QuantidadeVotos", quantidadeVotos.ToString(), similaridadeQtdVotos));
+                double similaridadeQtdVotos = CalcularSimilaridadeNumerica(Convert.ToDouble(filme.Cells["QuantidadeVotos"].Value),
+                                                                                            quantidadeVotos, 0, 14000);
+
+                resultados.Add((row.Cells["TituloOriginal"].Value.ToString(), 
+                                similaridadeIdiomaOriginal, 
+                                similaridadeTituloOriginal, 
+                                similaridadeVisaoGeral, 
+                                similaridadePopularidade, 
+                                similaridadeSlogan, 
+                                similaridadeQtdVotos));
             }
 
             // Ordena a lista de resultados pelo valor de similaridade em ordem decrescente
@@ -297,9 +301,38 @@ namespace RBC___Inteligencia_Artificial
             for (int i = 0; i < Math.Min(5, resultados.Count); i++)
             {
                 string tituloFilme = resultados[i].titulo;
-                string coluna = resultados[i].coluna;
                 double similaridade = resultados[i].similaridade;
-                Console.WriteLine($"- Filme '{tituloFilme}', Atributo: {coluna}, Similaridade: {similaridade}");
+                double similaridade1 = resultados[i].similaridade1;
+                double similaridade2 = resultados[i].similaridade2;
+                double similaridade3 = resultados[i].similaridade3;
+                double similaridade4 = resultados[i].similaridade4;
+                double similaridade5 = resultados[i].similaridade5;
+                Console.WriteLine($"- Filme '{tituloFilme}', " +
+                                  $"\nAtributo: IdiomaOriginal, Similaridade: {similaridade}" +
+                                  $"\nAtributo: TituloOriginal, Similaridade: {similaridade1}" +
+                                  $"\nAtributo: VisaoGeral, Similaridade: {similaridade2}" +
+                                  $"\nAtributo: Popularidade, Similaridade: {similaridade3}" +
+                                  $"\nAtributo: Slogan, Similaridade: {similaridade4}" +
+                                  $"\nAtributo: QuantidadeVotos, Similaridade: {similaridade5}");
+
+                /* PESOS
+                 * 3 - Idioma
+                 * 5 - Título
+                 * 2 - Visão Geral
+                 * 3 - Popularidade
+                 * 2 - Slogan
+                 * 3 - QuantidadeVotos
+                 */
+
+                int pesos = 18;
+                double similaridadeGlobal = 3 * similaridade + 5 * similaridade1 + 2 * similaridade2 + 
+                                            3 * similaridade3 + 2 * similaridade4 + 3 * similaridade5;
+
+                double similaridadeGlobalTotal = similaridadeGlobal / pesos;
+
+                Console.WriteLine(
+                    "Similaridade Global: " + Math.Round(similaridadeGlobalTotal, 2).ToString().Replace("0,", "") + "%"
+                    );
             }
         }
 
