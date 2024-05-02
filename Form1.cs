@@ -190,6 +190,19 @@ namespace RBC___Inteligencia_Artificial
         }
         #endregion
 
+        #region VerificarNomeFilme
+        public DataGridViewRow VerificaNomeFilme(string nomeFilme)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells["TituloOriginal"].Value.ToString().ToLower() == nomeFilme.ToLower())
+                    return row;
+            }
+
+            return null;
+        }
+        #endregion
+
         #region Cálculo dos filmes
         ////public void CalculoFilmes()
         ////{
@@ -227,18 +240,20 @@ namespace RBC___Inteligencia_Artificial
 
         public void CalculoFilmes()
         {
-            // Obtém o nome do filme fornecido pelo usuário
+            //Nome do filme fornecido pelo usuário
             string nomeFilme = txtNomeFilme.Text;
 
-            // Verifica se o nome do filme fornecido pelo usuário tem pelo menos 6 caracteres
-            if (nomeFilme.Length < 6)
+            //Verifica se o nome do filme fornecido pelo usuário é válido
+            DataGridViewRow filme = new DataGridViewRow();
+            filme = VerificaNomeFilme(nomeFilme);
+            if (filme == null)
             {
-                MessageBox.Show("Por favor, insira pelo menos 6 caracteres para o nome do filme.");
+                MessageBox.Show("Por favor, insira o nome de um filme válido.");
                 return;
             }
 
-            // Lista para armazenar os resultados de similaridade
-            List<(string titulo, double similaridade)> resultados = new List<(string, double)>();
+            //Lista para armazenar os resultados de similaridade
+            List<(string coluna, string titulo, double similaridade)> resultados = new List<(string, string, double)>();
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
@@ -250,11 +265,28 @@ namespace RBC___Inteligencia_Artificial
                 string slogan = row.Cells["Slogan"].Value.ToString();
                 double quantidadeVotos = Convert.ToDouble(row.Cells["QuantidadeVotos"].Value);
 
-                Filme filme = new Filme(id, idiomaOriginal, tituloOriginal, visaoGeral, popularidade, slogan, quantidadeVotos);
-
                 // Calcula a similaridade entre o nome do filme fornecido pelo usuário e os títulos dos filmes na lista
-                double similaridade = SimilaridadeStrings(nomeFilme, tituloOriginal);
-                resultados.Add((tituloOriginal, similaridade));
+                double similaridadeIdiomaOriginal = CalcularSimilaridadeContagemPalavras(filme.Cells["IdiomaOriginal"].Value.ToString(), 
+                                                                                         idiomaOriginal);
+                resultados.Add(("IdiomaOriginal", idiomaOriginal, similaridadeIdiomaOriginal));
+
+                double similaridadeTituloOriginal = CalcularSimilaridadeContagemPalavras(filme.Cells["TituloOriginal"].Value.ToString(), 
+                                                                                         tituloOriginal);
+                resultados.Add(("TituloOriginal", tituloOriginal, similaridadeTituloOriginal));
+
+                double similaridadeVisaoGeral = CalcularSimilaridadeContagemPalavras(filme.Cells["VisaoGeral"].Value.ToString(),
+                                                                                     visaoGeral);
+                resultados.Add(("VisaoGeral", visaoGeral, similaridadeVisaoGeral));
+
+                double similaridadePopularidade = CalcularSimilaridadeContagemPalavras(nomeFilme, tituloOriginal);
+                resultados.Add(("Popularidade", popularidade.ToString(), similaridadePopularidade));
+
+                double similaridadeSlogan = CalcularSimilaridadeContagemPalavras(filme.Cells["Slogan"].Value.ToString(),
+                                                                                 slogan);
+                resultados.Add(("Slogan", slogan, similaridadeSlogan));
+
+                double similaridadeQtdVotos = CalcularSimilaridadeContagemPalavras(nomeFilme, tituloOriginal);
+                resultados.Add(("QuantidadeVotos", quantidadeVotos.ToString(), similaridadeQtdVotos));
             }
 
             // Ordena a lista de resultados pelo valor de similaridade em ordem decrescente
@@ -265,200 +297,74 @@ namespace RBC___Inteligencia_Artificial
             for (int i = 0; i < Math.Min(5, resultados.Count); i++)
             {
                 string tituloFilme = resultados[i].titulo;
+                string coluna = resultados[i].coluna;
                 double similaridade = resultados[i].similaridade;
-                Console.WriteLine($"- Filme '{tituloFilme}', Similaridade: {similaridade}");
+                Console.WriteLine($"- Filme '{tituloFilme}', Atributo: {coluna}, Similaridade: {similaridade}");
             }
         }
 
         // Função para calcular a similaridade entre duas strings (método de exemplo)
         private double SimilaridadeStrings(string str1, string str2)
         {
-            //lógica de cálculo de similaridade aqui
-            //Aqui uma medida de similaridade de strings, como a Distância de Levenshtein
-            //exemplo:
-            //return 1.0 - (double)LevenshteinDistance.Compute(str1, str2) / Math.Max(str1.Length, str2.Length);
+                int count = 0;
 
-            //Para este exemplo simples, apenas verifica se str2 contém str1 (ignorando maiúsculas/minúsculas)
-            if (str2.ToLower().Contains(str1.ToLower()))
-            {
-                return 1.0;
-            }
-            else
-            {
-                return 0.0;
-            }
+                int length = Math.Min(str1.Length, str2.Length);
+
+                // Loop através de cada caractere e conte os iguais
+                for (int i = 0; i < length; i++)
+                {
+                    if (str1[i] == str2[i])
+                    {
+                        count++;
+                    }
+                }
+
+                return count;
         }
 
-        //////////public void CalculoFilmes()
-        //////////{
-        //////////    List<Filme> filmes = new List<Filme>();
+        private double CalcularSimilaridadeContagemPalavras(string str1, string str2)
+        {
+            // Divide as strings em palavras
+            string[] palavras1 = str1.ToLower().Split(' ');
+            string[] palavras2 = str2.ToLower().Split(' ');
 
-        //////////    foreach (DataGridViewRow row in dataGridView1.Rows)
-        //////////    {
-        //////////        int id = Convert.ToInt32(row.Cells["Id"].Value);
-        //////////        string idiomaOriginal = row.Cells["IdiomaOriginal"].Value.ToString();
-        //////////        string tituloOriginal = row.Cells["TituloOriginal"].Value.ToString();
-        //////////        string visaoGeral = row.Cells["VisaoGeral"].Value.ToString();
-        //////////        double popularidade = Convert.ToDouble(row.Cells["Popularidade"].Value);
-        //////////        string slogan = row.Cells["Slogan"].Value.ToString();
-        //////////        double quantidadeVotos = Convert.ToDouble(row.Cells["QuantidadeVotos"].Value);
+            // Conta o número de palavras idênticas
+            int palavrasIdenticas = palavras1.Count(p => palavras2.Contains(p));
 
-        //////////        filmes.Add(new Filme(id, idiomaOriginal, tituloOriginal, visaoGeral, popularidade, slogan, quantidadeVotos));
-        //////////    }
+            // Calcula a similaridade normalizada
+            double similaridade = (double)palavrasIdenticas / Math.Max(palavras1.Length, palavras2.Length);
 
-        //////////    // Lista para armazenar os resultados de similaridade
-        //////////    List<(int filmeId, double similaridade)>[] resultados = new List<(int, double)>[dataGridView1.Rows.Count];
+            return similaridade;
+        }
 
-        //////////    for (int i = 0; i < dataGridView1.Rows.Count; i++)
-        //////////    {
-        //////////        resultados[i] = new List<(int, double)>();
-        //////////        for (int j = 0; j < dataGridView1.Rows.Count; j++)
-        //////////        {
-        //////////            if (i != j)
-        //////////            {
-        //////////                double similaridade = filmes[i].CalcularSimilaridade(filmes[j]);
-        //////////                resultados[i].Add((j, similaridade));
-        //////////            }
-        //////////        }
+        private double CalcularSimilaridadeNumerica(double x, double y, double min, double max)
+        {
+            // Normaliza os valores
+            double normalizado = 1.0 - Math.Abs(y - x) / (max - min);
 
-        //////////        // Ordena a lista de resultados pelo valor de similaridade em ordem decrescente
-        //////////        resultados[i].Sort((x, y) => y.similaridade.CompareTo(x.similaridade));
-        //////////    }
+            return normalizado;
+        }
 
-        //////////    // Exibe os resultados para os três filmes fornecidos
-        //////////    for (int k = 0; k < 3; k++) // Itera sobre os três filmes fornecidos
-        //////////    {
-        //////////        int filmeId = filmes[k].Id;
-        //////////        Console.WriteLine($"Filme {filmeId}:");
-        //////////        for (int m = 0; m < Math.Min(5, resultados[k].Count); m++) // Exibe até os cinco filmes mais similares
-        //////////        {
-        //////////            int filmeSimilId = resultados[k][m].filmeId;
-        //////////            double similaridade = resultados[k][m].similaridade;
-        //////////            Console.WriteLine($"- Filme {filmeSimilId}, Similaridade: {similaridade}");
-        //////////        }
-        //////////        Console.WriteLine();
-        //////////    }
-        //////////}
         #endregion
 
-        #region Verificar
-
-        class Filme
+        #region Ajusta Tamanho das colunas no grid
+        public void AjustaColunasGrid()
         {
-            public int Id { get; set; }
-            public string IdiomaOriginal { get; set; }
-            public string TituloOriginal { get; set; }
-            public string VisaoGeral { get; set; }
-            public double Popularidade { get; set; }
-            public string Slogan { get; set; }
-            public double QuantidadeVotos { get; set; }
+            dataGridView1.Columns[1].Width = 600; //Genero
+            dataGridView1.Columns[2].Width = 400; //Pagina Inicial
+            dataGridView1.Columns[4].Width = 400; //Palavra Chave
+            dataGridView1.Columns[5].Width = 80;  //Idioma Original
+            dataGridView1.Columns[6].Width = 250; //Titulo Original
+            dataGridView1.Columns[7].Width = 400; //Visao Geral
+            dataGridView1.Columns[8].Width = 170; //Popularidade
+            dataGridView1.Columns[9].Width = 400; //Empresa Produtora
+            dataGridView1.Columns[10].Width = 300; //Paises Produtores
+            dataGridView1.Columns[11].Width = 100; //Data Liberacao
+            dataGridView1.Columns[13].Width = 100; //Idioma
+            dataGridView1.Columns[14].Width = 500; //Status
+            dataGridView1.Columns[16].Width = 400; //Titulo
 
-            public Filme(int id, string idiomaOriginal, string tituloOriginal, string visaoGeral, double popularidade, string slogan, double quantidadeVotos)
-            {
-                Id = id;
-                IdiomaOriginal = idiomaOriginal;
-                TituloOriginal = tituloOriginal;
-                VisaoGeral = visaoGeral;
-                Popularidade = popularidade;
-                Slogan = slogan;
-                QuantidadeVotos = quantidadeVotos;
-            }
-
-            public double CalcularSimilaridade(string nomeFilme)
-            {
-                // Implemente sua lógica de cálculo de similaridade aqui
-                // Neste exemplo simples, apenas verifica se o título contém o nome do filme (ignorando maiúsculas/minúsculas)
-                if (TituloOriginal.ToLower().Contains(nomeFilme.ToLower()))
-                {
-                    return 1.0;
-                }
-                else
-                {
-                    return 0.0;
-                }
-            }
         }
-
-        ////////class Filme
-        ////////{
-        ////////    public int Id { get; set; }
-        ////////    public string IdiomaOriginal { get; set; }
-        ////////    public string TituloOriginal { get; set; }
-        ////////    public string VisaoGeral { get; set; }
-        ////////    public double Popularidade { get; set; }
-        ////////    public string Slogan { get; set; }
-        ////////    public double QuantidadeVotos { get; set; }
-
-        ////////    public Filme(int id, string idiomaOriginal, string tituloOriginal, string visaoGeral, double popularidade, string slogan, double quantidadeVotos)
-        ////////    {
-        ////////        Id = id;
-        ////////        IdiomaOriginal = idiomaOriginal;
-        ////////        TituloOriginal = tituloOriginal;
-        ////////        VisaoGeral = visaoGeral;
-        ////////        Popularidade = popularidade;
-        ////////        Slogan = slogan;
-        ////////        QuantidadeVotos = quantidadeVotos;
-        ////////    }
-
-        ////////    public double CalcularSimilaridade(Filme outroFilme)
-        ////////    {
-        ////////        double similaridadeTotal = 0.0;
-        ////////        int numAtributos = 0;
-
-        ////////        if (IdiomaOriginal == outroFilme.IdiomaOriginal)
-        ////////        {
-        ////////            similaridadeTotal += 1.0;
-        ////////            numAtributos++;
-        ////////        }
-
-        ////////        if (TituloOriginal == outroFilme.TituloOriginal)
-        ////////        {
-        ////////            similaridadeTotal += 1.0;
-        ////////            numAtributos++;
-        ////////        }
-
-        ////////        // Aqui usar uma medida de similaridade de strings, como a Distância de Levenshtein
-        ////////        double similaridadeVisaoGeral = SimilaridadeStrings(VisaoGeral, outroFilme.VisaoGeral);
-        ////////        similaridadeTotal += similaridadeVisaoGeral;
-        ////////        numAtributos++;
-
-        ////////        double similaridadePopularidade = 1.0 - Math.Abs(Popularidade - outroFilme.Popularidade);
-        ////////        similaridadeTotal += similaridadePopularidade;
-        ////////        numAtributos++;
-
-        ////////        // Aqui usar uma medida de similaridade de strings, como a Distância de Levenshtein
-        ////////        double similaridadeSlogan = SimilaridadeStrings(Slogan, outroFilme.Slogan);
-        ////////        similaridadeTotal += similaridadeSlogan;
-        ////////        numAtributos++;
-
-        ////////        double similaridadeVotos = 1.0 - Math.Abs(QuantidadeVotos - outroFilme.QuantidadeVotos);
-        ////////        similaridadeTotal += similaridadeVotos;
-        ////////        numAtributos++;
-
-        ////////        double similaridadeMedia = similaridadeTotal / numAtributos;
-        ////////        return similaridadeMedia;
-        ////////    }
-
-        ////////    private double SimilaridadeStrings(string str1, string str2)
-        ////////    {
-        ////////        // Aqui implementar uma medida de similaridade de strings, como a Distância de Levenshtein
-        ////////        // exemplo:
-        ////////        // return 1.0 - (double)LevenshteinDistance.Compute(str1, str2) / Math.Max(str1.Length, str2.Length);
-        ////////        return 0.0; // Temporário - substitua pelo cálculo real
-        ////////    }
-        ////////}
-
-        //////public partial class Form1 : Form
-        //////{
-
-        //////    private void button1_Click(object sender, EventArgs e)
-        //////    {
-        //////        CalculoFilmes();
-        //////    }
-
-
-        //////}
-
         #endregion
     }
 }
