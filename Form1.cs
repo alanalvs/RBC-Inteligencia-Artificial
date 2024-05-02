@@ -273,12 +273,12 @@ namespace RBC___Inteligencia_Artificial
         // Função para calcular a similaridade entre duas strings (método de exemplo)
         private double SimilaridadeStrings(string str1, string str2)
         {
-            // Implemente sua lógica de cálculo de similaridade aqui
-            // Aqui você pode usar uma medida de similaridade de strings, como a Distância de Levenshtein
-            // Por exemplo:
-            // return 1.0 - (double)LevenshteinDistance.Compute(str1, str2) / Math.Max(str1.Length, str2.Length);
+            //lógica de cálculo de similaridade aqui
+            //Aqui uma medida de similaridade de strings, como a Distância de Levenshtein
+            //exemplo:
+            //return 1.0 - (double)LevenshteinDistance.Compute(str1, str2) / Math.Max(str1.Length, str2.Length);
 
-            // Para este exemplo simples, apenas verifica se str2 contém str1 (ignorando maiúsculas/minúsculas)
+            //Para este exemplo simples, apenas verifica se str2 contém str1 (ignorando maiúsculas/minúsculas)
             if (str2.ToLower().Contains(str1.ToLower()))
             {
                 return 1.0;
@@ -417,7 +417,7 @@ namespace RBC___Inteligencia_Artificial
         ////////            numAtributos++;
         ////////        }
 
-        ////////        // Aqui você pode usar uma medida de similaridade de strings, como a Distância de Levenshtein
+        ////////        // Aqui usar uma medida de similaridade de strings, como a Distância de Levenshtein
         ////////        double similaridadeVisaoGeral = SimilaridadeStrings(VisaoGeral, outroFilme.VisaoGeral);
         ////////        similaridadeTotal += similaridadeVisaoGeral;
         ////////        numAtributos++;
@@ -426,7 +426,7 @@ namespace RBC___Inteligencia_Artificial
         ////////        similaridadeTotal += similaridadePopularidade;
         ////////        numAtributos++;
 
-        ////////        // Aqui você pode usar uma medida de similaridade de strings, como a Distância de Levenshtein
+        ////////        // Aqui usar uma medida de similaridade de strings, como a Distância de Levenshtein
         ////////        double similaridadeSlogan = SimilaridadeStrings(Slogan, outroFilme.Slogan);
         ////////        similaridadeTotal += similaridadeSlogan;
         ////////        numAtributos++;
@@ -441,8 +441,8 @@ namespace RBC___Inteligencia_Artificial
 
         ////////    private double SimilaridadeStrings(string str1, string str2)
         ////////    {
-        ////////        // Aqui você pode implementar uma medida de similaridade de strings, como a Distância de Levenshtein
-        ////////        // Por exemplo:
+        ////////        // Aqui implementar uma medida de similaridade de strings, como a Distância de Levenshtein
+        ////////        // exemplo:
         ////////        // return 1.0 - (double)LevenshteinDistance.Compute(str1, str2) / Math.Max(str1.Length, str2.Length);
         ////////        return 0.0; // Temporário - substitua pelo cálculo real
         ////////    }
