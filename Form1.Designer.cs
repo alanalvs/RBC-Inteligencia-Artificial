@@ -411,6 +411,7 @@
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Raciocínio Baseado em Casos";
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmPrincipal_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlArrastarFormulario.ResumeLayout(false);
