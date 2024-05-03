@@ -33,6 +33,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.labelNomeFilme = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,6 +55,7 @@
             this.PaisesProdutores = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataLiberacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Receita = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Idiomas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Slogan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,12 +65,22 @@
             this.pnlArrastarFormulario = new System.Windows.Forms.Panel();
             this.iconFechar = new System.Windows.Forms.PictureBox();
             this.iconMinimizar = new System.Windows.Forms.PictureBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.btnPesquisar = new RBC___Inteligencia_Artificial.controls.novoBotao();
             this.txtNomeFilme = new RBC___Inteligencia_Artificial.controls.textBoxComImagem();
+            this.TituloFilme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SimilaridadeGeral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlArrastarFormulario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNomeFilme
@@ -73,9 +89,10 @@
             this.labelNomeFilme.AutoSize = true;
             this.labelNomeFilme.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNomeFilme.ForeColor = System.Drawing.Color.DimGray;
-            this.labelNomeFilme.Location = new System.Drawing.Point(40, 133);
+            this.labelNomeFilme.Location = new System.Drawing.Point(43, 205);
+            this.labelNomeFilme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNomeFilme.Name = "labelNomeFilme";
-            this.labelNomeFilme.Size = new System.Drawing.Size(84, 22);
+            this.labelNomeFilme.Size = new System.Drawing.Size(118, 30);
             this.labelNomeFilme.TabIndex = 46;
             this.labelNomeFilme.Text = "Pesquisa";
             // 
@@ -84,9 +101,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gold;
-            this.label4.Location = new System.Drawing.Point(262, 44);
+            this.label4.Location = new System.Drawing.Point(287, 68);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(466, 31);
+            this.label4.Size = new System.Drawing.Size(711, 47);
             this.label4.TabIndex = 48;
             this.label4.Text = "Raciocínio Baseado em Casos (RBC)";
             // 
@@ -123,6 +141,7 @@
             this.PaisesProdutores,
             this.DataLiberacao,
             this.Receita,
+            this.Duracao,
             this.Idiomas,
             this.Status,
             this.Slogan,
@@ -138,7 +157,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(43, 186);
+            this.dataGridView1.Location = new System.Drawing.Point(64, 286);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -154,8 +174,9 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.Size = new System.Drawing.Size(887, 443);
+            this.dataGridView1.Size = new System.Drawing.Size(1330, 682);
             this.dataGridView1.TabIndex = 102;
+            this.dataGridView1.Visible = false;
             // 
             // idpais
             // 
@@ -253,7 +274,7 @@
             // 
             // DataLiberacao
             // 
-            this.DataLiberacao.HeaderText = "Data de Liberação";
+            this.DataLiberacao.HeaderText = "Data de Lançamento";
             this.DataLiberacao.MinimumWidth = 8;
             this.DataLiberacao.Name = "DataLiberacao";
             this.DataLiberacao.ReadOnly = true;
@@ -266,6 +287,14 @@
             this.Receita.Name = "Receita";
             this.Receita.ReadOnly = true;
             this.Receita.Width = 94;
+            // 
+            // Duracao
+            // 
+            this.Duracao.HeaderText = "Duração";
+            this.Duracao.MinimumWidth = 8;
+            this.Duracao.Name = "Duracao";
+            this.Duracao.ReadOnly = true;
+            this.Duracao.Width = 150;
             // 
             // Idiomas
             // 
@@ -321,8 +350,9 @@
             this.pnlArrastarFormulario.Controls.Add(this.iconMinimizar);
             this.pnlArrastarFormulario.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlArrastarFormulario.Location = new System.Drawing.Point(0, 0);
+            this.pnlArrastarFormulario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlArrastarFormulario.Name = "pnlArrastarFormulario";
-            this.pnlArrastarFormulario.Size = new System.Drawing.Size(976, 24);
+            this.pnlArrastarFormulario.Size = new System.Drawing.Size(1464, 37);
             this.pnlArrastarFormulario.TabIndex = 103;
             this.pnlArrastarFormulario.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlArrastarFormulario_MouseDown);
             // 
@@ -331,9 +361,10 @@
             this.iconFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconFechar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconFechar.Image = global::RBC___Inteligencia_Artificial.Properties.Resources.x;
-            this.iconFechar.Location = new System.Drawing.Point(944, 4);
+            this.iconFechar.Location = new System.Drawing.Point(1412, 6);
+            this.iconFechar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.iconFechar.Name = "iconFechar";
-            this.iconFechar.Size = new System.Drawing.Size(20, 20);
+            this.iconFechar.Size = new System.Drawing.Size(30, 31);
             this.iconFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconFechar.TabIndex = 30;
             this.iconFechar.TabStop = false;
@@ -344,13 +375,71 @@
             this.iconMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconMinimizar.Image = global::RBC___Inteligencia_Artificial.Properties.Resources.janela_minimizada;
-            this.iconMinimizar.Location = new System.Drawing.Point(918, 4);
+            this.iconMinimizar.Location = new System.Drawing.Point(1373, 6);
+            this.iconMinimizar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.iconMinimizar.Name = "iconMinimizar";
-            this.iconMinimizar.Size = new System.Drawing.Size(20, 20);
+            this.iconMinimizar.Size = new System.Drawing.Size(30, 31);
             this.iconMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconMinimizar.TabIndex = 31;
             this.iconMinimizar.TabStop = false;
             this.iconMinimizar.Click += new System.EventHandler(this.iconMinimizar_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(239)))), ((int)(((byte)(249)))));
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.DimGray;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TituloFilme,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn20,
+            this.SimilaridadeGeral});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridView2.EnableHeadersVisualStyles = false;
+            this.dataGridView2.Location = new System.Drawing.Point(46, 274);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridView2.RowHeadersWidth = 20;
+            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridView2.Size = new System.Drawing.Size(1200, 442);
+            this.dataGridView2.TabIndex = 104;
             // 
             // btnPesquisar
             // 
@@ -362,9 +451,10 @@
             this.btnPesquisar.FlatAppearance.BorderSize = 0;
             this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisar.ForeColor = System.Drawing.Color.DimGray;
-            this.btnPesquisar.Location = new System.Drawing.Point(435, 124);
+            this.btnPesquisar.Location = new System.Drawing.Point(637, 191);
+            this.btnPesquisar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(150, 40);
+            this.btnPesquisar.Size = new System.Drawing.Size(225, 62);
             this.btnPesquisar.TabIndex = 50;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.TextColor = System.Drawing.Color.DimGray;
@@ -380,26 +470,91 @@
             this.txtNomeFilme.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNomeFilme.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtNomeFilme.ForeColor = System.Drawing.Color.DimGray;
-            this.txtNomeFilme.Location = new System.Drawing.Point(126, 131);
-            this.txtNomeFilme.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNomeFilme.Location = new System.Drawing.Point(174, 202);
+            this.txtNomeFilme.Margin = new System.Windows.Forms.Padding(6);
             this.txtNomeFilme.Multiline = false;
             this.txtNomeFilme.Name = "txtNomeFilme";
             this.txtNomeFilme.NovaImagem = global::RBC___Inteligencia_Artificial.Properties.Resources.icone_video_gold;
-            this.txtNomeFilme.Padding = new System.Windows.Forms.Padding(7);
+            this.txtNomeFilme.Padding = new System.Windows.Forms.Padding(10, 11, 10, 11);
             this.txtNomeFilme.PasswordChar = false;
-            this.txtNomeFilme.Size = new System.Drawing.Size(295, 28);
+            this.txtNomeFilme.Size = new System.Drawing.Size(442, 43);
             this.txtNomeFilme.TabIndex = 49;
             this.txtNomeFilme.TextNew = "Filme";
             this.txtNomeFilme.UnderlinedStyle = false;
             this.txtNomeFilme.Enter += new System.EventHandler(this.txtNomeFilme_Enter);
             this.txtNomeFilme.Leave += new System.EventHandler(this.txtNomeFilme_Leave);
             // 
+            // TituloFilme
+            // 
+            this.TituloFilme.HeaderText = "Título";
+            this.TituloFilme.MinimumWidth = 8;
+            this.TituloFilme.Name = "TituloFilme";
+            this.TituloFilme.ReadOnly = true;
+            this.TituloFilme.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Idioma Original";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 139;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Título Original";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Visão Geral";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 115;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Popularidade";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 137;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.HeaderText = "Slogan";
+            this.dataGridViewTextBoxColumn17.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.Width = 88;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.HeaderText = "Quantidade de Votos";
+            this.dataGridViewTextBoxColumn20.MinimumWidth = 8;
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.dataGridViewTextBoxColumn20.Width = 141;
+            // 
+            // SimilaridadeGeral
+            // 
+            this.SimilaridadeGeral.HeaderText = "Similaridade Geral";
+            this.SimilaridadeGeral.MinimumWidth = 8;
+            this.SimilaridadeGeral.Name = "SimilaridadeGeral";
+            this.SimilaridadeGeral.ReadOnly = true;
+            this.SimilaridadeGeral.Width = 150;
+            // 
             // FrmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(976, 664);
+            this.ClientSize = new System.Drawing.Size(1464, 1022);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.pnlArrastarFormulario);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnPesquisar);
@@ -408,6 +563,7 @@
             this.Controls.Add(this.labelNomeFilme);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Raciocínio Baseado em Casos";
@@ -417,6 +573,7 @@
             this.pnlArrastarFormulario.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iconFechar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,6 +585,9 @@
         private controls.textBoxComImagem txtNomeFilme;
         private controls.novoBotao btnPesquisar;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel pnlArrastarFormulario;
+        private System.Windows.Forms.PictureBox iconFechar;
+        private System.Windows.Forms.PictureBox iconMinimizar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idpais;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomepais;
         private System.Windows.Forms.DataGridViewTextBoxColumn siglapais;
@@ -441,15 +601,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PaisesProdutores;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataLiberacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receita;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Duracao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Idiomas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Slogan;
         private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn MediaVotos;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantidadeVotos;
-        private System.Windows.Forms.Panel pnlArrastarFormulario;
-        private System.Windows.Forms.PictureBox iconFechar;
-        private System.Windows.Forms.PictureBox iconMinimizar;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TituloFilme;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SimilaridadeGeral;
     }
 }
 

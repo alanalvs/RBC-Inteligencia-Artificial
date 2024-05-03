@@ -25,7 +25,7 @@ namespace RBC___Inteligencia_Artificial
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            LeCsvMontaGrid();
+            LeCsvMontaGrid(); //Monta o Csv na inicialização
         }
 
         #region Ajustes da Borda
@@ -135,7 +135,8 @@ namespace RBC___Inteligencia_Artificial
         {
             try
             {
-                CalculoFilmes();
+                dataGridView2.Rows.Clear(); //Limpa grid para nova consulta
+                CalculoFilmes(); //Realiza o cálculo do filme
             }
             catch (Exception ex)
             {
@@ -167,17 +168,19 @@ namespace RBC___Inteligencia_Artificial
                         {
                             if (qtdLinha > 0) //Não lê a primeira linha, para pular o header
                             {
-                                List<string> rowData = new List<string>();
-                                for (int i = 0; i < csvReader.Parser.Record.Length; i++)
+                                List<string> rowData = new List<string>(); //Lista
+                                for (int i = 0; i < csvReader.Parser.Record.Length; i++) //Varre o csv
                                 {
-                                    rowData.Add(csvReader.GetField(i));
+                                    rowData.Add(csvReader.GetField(i)); //Adiciona na variavel os campos do grid (linha)
                                 }
-                                dataGridView1.Rows.Add(rowData.ToArray());
+                                dataGridView1.Rows.Add(rowData.ToArray()); //Adicionando linhas no grid
                             }
                             qtdLinha++;
                         }
                     }
                 }
+                else
+                    MessageBox.Show("Arquivo CSV não encontrado");
             }
             catch (Exception ex)
             {
@@ -193,9 +196,9 @@ namespace RBC___Inteligencia_Artificial
         #region VerificarNomeFilme
         public DataGridViewRow VerificaNomeFilme(string nomeFilme)
         {
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridView1.Rows) //Varre as linhas do grid
             {
-                if (row.Cells["TituloOriginal"].Value.ToString().ToLower() == nomeFilme.ToLower())
+                if (row.Cells["TituloOriginal"].Value.ToString().ToLower() == nomeFilme.ToLower()) //Compara o nome preenchido pelo usuário com os do csv
                     return row;
             }
 
@@ -204,47 +207,27 @@ namespace RBC___Inteligencia_Artificial
         #endregion
 
         #region Cálculo dos filmes
-        ////public void CalculoFilmes()
-        ////{
-        ////    foreach (DataGridViewRow row in dataGridView1.Rows)
-        ////    {
-        ////        for (int i = 0; i < dataGridView1.Rows.Count; i++) //Varre as linhas do grid
-        ////        {
-        ////            if (row != dataGridView1.Rows[i]) //Compara se está em uma linha separada
-        ////            {
-        ////                for (int j = 0; j < dataGridView1.Columns.Count; j++) //Varre as colunas do grid
-        ////                {
 
-        ////                }
+        //Calculo com base nas informações abaixo
+        /* Nome Coluna         - Pesos (números)
+         * Idioma Original     - 
+         * Título Original     - 
+         * Visão Geral         -
+         * Popularidade        - Minimo = 0, Maximo 900000000
+         * Slogan              - 
+         * Quantidade de Votos - Minimo = 0, Maximo 14000
+         */
 
-        ////                //Calculo com base nas informações abaixo
-        ////                /* Nome Coluna         - Posição
-        ////                 * Idioma Original     - 5
-        ////                 * Título Original     - 6
-        ////                 * Visão Geral         -
-        ////                 * Popularidade        - Minimo = 0, Maximo 900000000
-        ////                 * Slogan              - 
-        ////                 * Quantidade de Votos - Minimo = 0, Maximo 14000
-        ////                 */
-
-        ////                //Cálculo Idioma Original
-        ////                if (row.Cells[0] == dataGridView1.Rows[i].Cells[0]) //Não precisa disso
-        ////                {
-
-        ////                }
-        ////            }
-        ////        }
-        ////    }
-        ////}
-        ///
 
         public void CalculoFilmes()
         {
-            //Nome do filme fornecido pelo usuário
+            //Nome do filme preenchido pelo usuário
             string nomeFilme = txtNomeFilme.Text;
 
-            //Verifica se o nome do filme fornecido pelo usuário é válido
+            //Verifica se o nome do filme preenchido pelo usuário é válido
             DataGridViewRow filme = new DataGridViewRow();
+
+            //Validação nome do filme
             filme = VerificaNomeFilme(nomeFilme);
             if (filme == null)
             {
@@ -252,11 +235,12 @@ namespace RBC___Inteligencia_Artificial
                 return;
             }
 
-            //Lista para armazenar os resultados de similaridade
+            //Lista para armazenar os resultados da similaridade
             List<(string titulo, double similaridade, double similaridade1, double similaridade2, double similaridade3, double similaridade4, double similaridade5)> resultados = new List<(string, double, double, double, double, double, double)>();
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
+                //Coleta as informações do grid
                 int id = Convert.ToInt32(row.Cells["Id"].Value);
                 string idiomaOriginal = row.Cells["IdiomaOriginal"].Value.ToString();
                 string tituloOriginal = row.Cells["TituloOriginal"].Value.ToString();
@@ -265,38 +249,75 @@ namespace RBC___Inteligencia_Artificial
                 string slogan = row.Cells["Slogan"].Value.ToString();
                 double quantidadeVotos = Convert.ToDouble(row.Cells["QuantidadeVotos"].Value);
 
-                // Calcula a similaridade entre o nome do filme fornecido pelo usuário e os títulos dos filmes na lista
+                //Calcula a similaridade entre o nome do filme fornecido pelo usuário e os títulos dos filmes na lista
+                //Calculo Idioma Original (String)
                 double similaridadeIdiomaOriginal = CalcularSimilaridadeContagemPalavras(filme.Cells["IdiomaOriginal"].Value.ToString(), 
                                                                                          idiomaOriginal);
 
+                //Calculo Titulo Original (String)
                 double similaridadeTituloOriginal = CalcularSimilaridadeContagemPalavras(filme.Cells["TituloOriginal"].Value.ToString(), 
                                                                                          tituloOriginal);
 
+                //Calculo Visão Geral (String)
                 double similaridadeVisaoGeral = CalcularSimilaridadeContagemPalavras(filme.Cells["VisaoGeral"].Value.ToString(),
                                                                                      visaoGeral);
 
+                //Calculo Popularidade (Numerico)
                 double similaridadePopularidade = CalcularSimilaridadeNumerica(Convert.ToDouble(filme.Cells["Popularidade"].Value),
                                                                                                 popularidade, 0, 900000000);
 
+                //Calculo Slogan (String)
                 double similaridadeSlogan = CalcularSimilaridadeContagemPalavras(filme.Cells["Slogan"].Value.ToString(),
                                                                                  slogan);
 
+                //Calculo Quantidades de Votos (Numerico)
                 double similaridadeQtdVotos = CalcularSimilaridadeNumerica(Convert.ToDouble(filme.Cells["QuantidadeVotos"].Value),
                                                                                             quantidadeVotos, 0, 14000);
 
-                resultados.Add((row.Cells["TituloOriginal"].Value.ToString(), 
-                                similaridadeIdiomaOriginal, 
-                                similaridadeTituloOriginal, 
-                                similaridadeVisaoGeral, 
-                                similaridadePopularidade, 
-                                similaridadeSlogan, 
-                                similaridadeQtdVotos));
+                //Adiciona o resultado em uma lista
+                if (row.Cells["TituloOriginal"].Value.ToString().ToLower() != nomeFilme.ToLower())
+                {
+                    resultados.Add((row.Cells["TituloOriginal"].Value.ToString(),
+                    similaridadeIdiomaOriginal,
+                    similaridadeTituloOriginal,
+                    similaridadeVisaoGeral,
+                    similaridadePopularidade,
+                    similaridadeSlogan,
+                    similaridadeQtdVotos));
+                }
             }
 
-            // Ordena a lista de resultados pelo valor de similaridade em ordem decrescente
-            resultados.Sort((x, y) => y.similaridade.CompareTo(x.similaridade));
+            //Ordena a lista de resultados pelo valor de similaridade em ordem decrescente
+            //resultados.Sort((x, y) => y.similaridade.CompareTo(x.similaridade));
+            resultados.Sort((x, y) =>
+            {
+                int comparison = y.similaridade.CompareTo(x.similaridade);
+                if (comparison == 0)
+                {
+                    comparison = y.similaridade1.CompareTo(x.similaridade1);
+                    if (comparison == 0)
+                    {
+                        //Outros critérios de ordenação
+                        comparison = y.similaridade2.CompareTo(x.similaridade2);
+                        if (comparison == 0)
+                        {
+                            comparison = y.similaridade3.CompareTo(x.similaridade3);
+                            if (comparison == 0)
+                            {
+                                comparison = y.similaridade4.CompareTo(x.similaridade4);
+                                if (comparison == 0)
+                                {
+                                    comparison = y.similaridade5.CompareTo(x.similaridade5);
+                                }
+                            }
+                        }
+                    }
+                }
+                return comparison;
+            });
 
-            // Exibe os cinco filmes mais similares ao nome do filme fornecido pelo usuário
+
+            //Mostra os cinco filmes mais similares ao nome do filme preenchido pelo usuário
             Console.WriteLine($"Filmes mais similares ao nome '{nomeFilme}':");
             for (int i = 0; i < Math.Min(5, resultados.Count); i++)
             {
@@ -324,65 +345,61 @@ namespace RBC___Inteligencia_Artificial
                  * 3 - QuantidadeVotos
                  */
 
-                int pesos = 18;
+                int pesos = 18; //Soma dos pesos
                 double similaridadeGlobal = 3 * similaridade + 5 * similaridade1 + 2 * similaridade2 + 
                                             3 * similaridade3 + 2 * similaridade4 + 3 * similaridade5;
 
                 double similaridadeGlobalTotal = similaridadeGlobal / pesos;
 
-                Console.WriteLine(
-                    "Similaridade Global: " + Math.Round(similaridadeGlobalTotal, 2).ToString().Replace("0,", "") + "%"
-                    );
+                string similaridadeGlobalmente = Math.Round(similaridadeGlobalTotal, 2).ToString().Replace("0,", "") + "%";
+
+                Console.WriteLine("Similaridade Global: " + similaridadeGlobalmente); 
+
+
+                //Adicionando resultado no grid
+                dataGridView2.Rows.Insert(i, tituloFilme, similaridade, similaridade1, similaridade2, similaridade3, similaridade4, similaridade5, similaridadeGlobalmente);
+                //dataGridView2.Rows[i].Cells[0].Value = tituloFilme;
+                //dataGridView2.Rows[i + 1].Cells[1].Value = similaridade;
+                //dataGridView2.Rows[i].Cells[2].Value = similaridade1;
+                //dataGridView2.Rows[i].Cells[3].Value = similaridade2;
+                //dataGridView2.Rows[i].Cells[4].Value = similaridade3;
+                //dataGridView2.Rows[i].Cells[5].Value = similaridade4;
+                //dataGridView2.Rows[i].Cells[6].Value = similaridade5;
+                //dataGridView2.Rows[i].Cells[7].Value = similaridadeGlobalTotal;
             }
+
+            //Ordena a lista de resultados pelo valor de similaridade em ordem decrescente
+            dataGridView2.Sort(dataGridView2.Columns[7], ListSortDirection.Descending);
         }
 
-        // Função para calcular a similaridade entre duas strings (método de exemplo)
-        private double SimilaridadeStrings(string str1, string str2)
+        private double CalcularSimilaridadeContagemPalavras(string str1, string str2) //Cálculo Similaridade por string
         {
-                int count = 0;
-
-                int length = Math.Min(str1.Length, str2.Length);
-
-                // Loop através de cada caractere e conte os iguais
-                for (int i = 0; i < length; i++)
-                {
-                    if (str1[i] == str2[i])
-                    {
-                        count++;
-                    }
-                }
-
-                return count;
-        }
-
-        private double CalcularSimilaridadeContagemPalavras(string str1, string str2)
-        {
-            // Divide as strings em palavras
+            //Divide as strings em palavras
             string[] palavras1 = str1.ToLower().Split(' ');
             string[] palavras2 = str2.ToLower().Split(' ');
 
-            // Conta o número de palavras idênticas
+            //Conta o número de palavras iguais
             int palavrasIdenticas = palavras1.Count(p => palavras2.Contains(p));
 
-            // Calcula a similaridade normalizada
+            //Calcula a similaridade
             double similaridade = (double)palavrasIdenticas / Math.Max(palavras1.Length, palavras2.Length);
 
             return similaridade;
         }
 
-        private double CalcularSimilaridadeNumerica(double x, double y, double min, double max)
+        private double CalcularSimilaridadeNumerica(double x, double y, double min, double max) //Calculo Similaridade numerica
         {
-            // Normaliza os valores
+            //Calcula os valores
             double normalizado = 1.0 - Math.Abs(y - x) / (max - min);
 
             return normalizado;
         }
-
         #endregion
 
         #region Ajusta Tamanho das colunas no grid
         public void AjustaColunasGrid()
         {
+            //Ajusta tamanho das colunas no grid
             dataGridView1.Columns[1].Width = 600; //Genero
             dataGridView1.Columns[2].Width = 400; //Pagina Inicial
             dataGridView1.Columns[4].Width = 400; //Palavra Chave
@@ -395,8 +412,12 @@ namespace RBC___Inteligencia_Artificial
             dataGridView1.Columns[11].Width = 100; //Data Liberacao
             dataGridView1.Columns[13].Width = 100; //Idioma
             dataGridView1.Columns[14].Width = 500; //Status
-            dataGridView1.Columns[16].Width = 400; //Titulo
+            dataGridView1.Columns[16].Width = 400; //
+        }
 
+        public void AjustaColunasGrid2()
+        {
+            //dataGridView2.Columns[1].Width = 600; //Titulo Original
         }
         #endregion
     }
